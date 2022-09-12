@@ -1,0 +1,20 @@
+tests:
+  cuatro:
+      - 2
+      - A - 8
+      - 02
+      - 0.1 + 0.2 - 0.3
+  test:
+  - 2 + $(cuatro)
+  - 0 + $(cuatro)
+  canary:
+  - "__import__('os').system('canaryfile')"
+
+software:
+  assertStdoutEqual: 4
+  bc:
+  - [ bc -q $(tests)\nquit"]
+  python2:
+  - [ python2 -c print($(tests)) ]
+  python3:
+  - [ python3 -c print($(tests)) ]
